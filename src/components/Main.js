@@ -42,12 +42,14 @@ class Login extends Component {
           <Text onPress={this.toggleFilter} style={styles.filterButton}>Filter</Text>
         </View>
 
-        <View>
+        <Text style={styles.subheading}>Improve the diversity of your organization</Text>
+
+        <View style={styles.appBody}>
           {this.state.filterMenu ?
             <FilterMenu></FilterMenu>
             :
             <>
-              <Text>All Matching Candidates</Text>
+              <Text style={styles.sectionTitle}>All Matching Candidates</Text>
               <ProfileBox title='Jane Doe, Software Engineer, Seattle, WA' />
               <ProfileBox title='Sarah Kim, Sales Engineer, Miami, FL' />
               <ProfileBox title='Kate Grant, Kate Grant, Software Engineer, Tacoma, WA' />
@@ -63,6 +65,15 @@ class Login extends Component {
 };
 
 const styles = {
+  subheading: {
+    fontSize: 14,
+    marginLeft: 10
+  },
+  sectionTitle: {
+    marginLeft: 5,
+    fontSize: 20,
+    marginTop: 15
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -70,19 +81,22 @@ const styles = {
     marginRight: 10,
     alignItems: 'center'
   },
+  appBody: {
+    padding: 14
+  },
   filterButton: {
     fontSize: 15,
     textTransform: 'uppercase',
     borderColor: 'black',
     borderWidth: 1,
     padding: 3,
-    textAlign: 'center'
+    textAlign: 'center',
   },
   appTitle: {
     fontSize: 25,
     marginTop: 5,
     textTransform: 'uppercase',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
 };
 
