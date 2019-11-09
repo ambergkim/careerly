@@ -8,21 +8,21 @@ import {
 } from 'react-native';
 
 import ProfileBox from './ProfileBox.js';
-import ProfileDetails from './ProfileDetails.js';
+import FilterMenu from './FilterMenu.js';
+
 
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      hide: true,
+      filterMenu: false,
     };
-
-    this.clickProfile = this.clickProfile.bind(this);
+    this.toggleFilter = this.toggleFilter.bind(this);
   }
 
-  clickProfile() {
-    this.setState({ hide: !this.state.hide })
+  toggleFilter() {
+    this.setState({ filterMenu: !this.state.filterMenu })
     console.log('***** state', this.state);
   }
 
@@ -32,47 +32,58 @@ class Login extends Component {
       form,
       input,
       button,
+      appTitle
     } = styles;
 
     return (
-      <View style={form} >
-        <TouchableOpacity
-          style={button}
-          onPress={this.clickProfile}
-        >
-          <ProfileBox />
-          <View>
-            { this.state.hide ? <Fragment></Fragment> : <ProfileDetails />}
-          </View>
-        </TouchableOpacity>
+      <View>
+        <View style={styles.header}>
+          <Text style={appTitle}>Careerly</Text>
+          <Text onPress={this.toggleFilter} style={styles.filterButton}>Filter</Text>
+        </View>
 
+        <View>
+          {this.state.filterMenu ?
+            <FilterMenu></FilterMenu>
+            :
+            <>
+              <Text>All Matching Candidates</Text>
+              <ProfileBox title='Jane Doe, Software Engineer, Seattle, WA' />
+              <ProfileBox title='Sarah Kim, Sales Engineer, Miami, FL' />
+              <ProfileBox title='Kate Grant, Kate Grant, Software Engineer, Tacoma, WA' />
+              <ProfileBox title='John Smith, Customer Care, Salt Lake City, UT' />
+              <ProfileBox title='Alex Danvers, Program manager, Middlevale, CA' />
+              <ProfileBox title='Ethan Evans, Sales, Ft. Lauderdale, FL' />
+            </>
+          }
+        </View>
       </View>
     )
   }
 };
 
 const styles = {
-  form: {
-    height: '100%',
-    width: '100%',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginLeft: 10,
+    marginRight: 10,
+    alignItems: 'center'
   },
-  avatar: {
-    width: 50,
-    height: 50,
-    resizeMode: 'center',
-    marginBottom: 20,
+  filterButton: {
+    fontSize: 15,
+    textTransform: 'uppercase',
+    borderColor: 'black',
+    borderWidth: 1,
+    padding: 3,
+    textAlign: 'center'
   },
-  input: {
-    width: '80%',
-    borderColor: 'gray',
-    borderWidth: 2,
-    borderRadius: 5,
-    padding: 10,
-    marginBottom: 10
+  appTitle: {
+    fontSize: 25,
+    marginTop: 5,
+    textTransform: 'uppercase',
+    fontWeight: 'bold'
   },
-}
+};
 
 export default Login;

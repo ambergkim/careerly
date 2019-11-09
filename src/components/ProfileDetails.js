@@ -6,7 +6,8 @@ import {
   View,
   Text,
   StatusBar,
-  Image
+  Image,
+  Button
 } from 'react-native';
 
 const ProfileDetails: () => React$Node = () => {
@@ -14,15 +15,23 @@ const ProfileDetails: () => React$Node = () => {
     <>
       <View style={styles.detailsContainer}>
         <Text style={styles.p}>Status: Interviewing</Text>
-        <Text style={styles.p}>Title: Software Engineer</Text>
-        <Text style={styles.p}>Work Experience:</Text>
-        <Text style={styles.p}>Lorem Ipsum</Text>
+        <Text style={styles.p}>Years Experience: 6+</Text>
+        <Text style={styles.p}>Education Level: Bachelors Degree</Text>
+        <Text style={styles.p}>Open to Relocation: Yes</Text>
+        <View style={styles.moreButton}>
+          <Button title="View More Details" />
+        </View>
       </View>
     </>
   );
 };
 
 const styles = StyleSheet.create({
+  moreButton: {
+    borderColor: 'black',
+    borderWidth: 1,
+    padding: 3,
+  },
   detailsContainer: {
     flexDirection: "column",
   },
