@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     padding: 3,
   },
   detailsContainer: {
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   p: {
     marginTop: 10,

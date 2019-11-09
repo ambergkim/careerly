@@ -1,4 +1,7 @@
 import React from 'react';
+
+import CheckBox from '@react-native-community/checkbox';
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -6,8 +9,7 @@ import {
   View,
   Text,
   StatusBar,
-  Image,
-  CheckBox
+  Image
 } from 'react-native';
 
 const FilterMenu: () => React$Node = () => {
@@ -57,9 +59,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   sectionTitle: {
-    marginLeft: 10,
+    marginLeft: 5,
     fontSize: 20,
-  }
+    marginBottom: 15,
+  },
 });
 
 export default FilterMenu;
